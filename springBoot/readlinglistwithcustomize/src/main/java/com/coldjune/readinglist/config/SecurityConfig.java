@@ -24,17 +24,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/").access("hasRole('READER')")
-                .antMatchers("/**").permitAll()
+                .antMatchers("/").access("hasRole('READER')")//'/'的请求只有经过身份验证的且拥有READER权限的才能访问
+                .antMatchers("/**").permitAll()//其它请求路径向所有用户开放了访问权限
                 .and()
                 .formLogin()
-                .loginPage("/login")
-                .failureUrl("/login?error=true");
+                .loginPage("/login")//登陆页
+                .failureUrl("/login?error=true");//登陆失败
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
+        //用于查找指定用户名的用户
         auth.userDetailsService(new UserDetailsService() {
             @Override
             public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

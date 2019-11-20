@@ -21,7 +21,7 @@ public class ReadingListController {
         this.readingListRepository = readingListRepository;
     }
 
-    @RequestMapping(value = "/{reader}", method = RequestMethod.GET)
+    @RequestMapping( method = RequestMethod.GET)
     //处理/{reader}上的GET请求
     //从仓库获取book列表并塞入模型，用books作为键
     //返回readingList作为呈现模型的视图逻辑名称
@@ -33,13 +33,13 @@ public class ReadingListController {
         return "readingList";
     }
 
-    @RequestMapping(value = "/{reader}", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     //处理/{reader}上的POST请求
     //将请求正文的数据绑定到一个Book对象上，然后保存到仓库
     //最后重定向到/{reader}
     public String addToReadingList(@PathVariable("reader") String reader, Book book){
         book.setReader(reader);
         readingListRepository.save(book);
-        return "redirect:/{reader}";
+        return "redirect:/";
     }
 }
