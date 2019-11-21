@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @ComponentScan("com.coldjune.readinglist")
@@ -23,6 +24,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().ignoringAntMatchers("/h2-console/**");
+        http.headers().frameOptions().sameOrigin();
         http.authorizeRequests()
                 .antMatchers("/").access("hasRole('READER')")//'/'的请求只有经过身份验证的且拥有READER权限的才能访问
                 .antMatchers("/**").permitAll()//其它请求路径向所有用户开放了访问权限
@@ -38,12 +41,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(new UserDetailsService() {
             @Override
             public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                 UserDetails userDetails = readerRepository.getOne(username);
+                 UserDetails
+                         userDetails = readerRepository.getOne(username);
                  if(userDetails == null){
                      throw  new RuntimeException("have no user");
                  }
                  return userDetails;
             }
-        });
+        }).passwordEncoder(new MyPassWordEncoder());
+    }
+
+}
+
+class MyPassWordEncoder implements PasswordEncoder{
+    @Override
+    public String encode(CharSequence charSequence) {
+        return charSequence.toString();
+    }
+
+    @Override
+    public boolean matches(CharSequence charSequence, String s) {
+        return s.equals(charSequence.toString());
     }
 }

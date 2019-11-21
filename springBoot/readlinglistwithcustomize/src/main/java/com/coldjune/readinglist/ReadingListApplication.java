@@ -1,10 +1,14 @@
 package com.coldjune.readinglist;
 
 import com.coldjune.readinglist.handler.ReaderHandlerMethodArgumentResolver;
+import com.coldjune.readinglist.model.Reader;
+import com.coldjune.readinglist.service.ReaderRepository;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -23,6 +27,16 @@ import java.util.List;
 //@EnableAutoConfiguration 开启Spring Boot的自动配置
 public class ReadingListApplication implements WebMvcConfigurer {
 
+    @Bean
+    InitializingBean saveData(ReaderRepository readerRepository){
+        return ()->{
+            Reader reader = new Reader();
+            reader.setFullname("coldJune");
+            reader.setUsername("coldJune");
+            reader.setPassword("coldJune");
+            readerRepository.save(reader);
+        };
+    }
     public static void main(String[] args) {
         SpringApplication.run(ReadingListApplication.class, args);
     }
