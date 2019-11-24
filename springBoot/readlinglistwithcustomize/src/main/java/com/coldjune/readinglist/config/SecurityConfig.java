@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().ignoringAntMatchers("/h2-console/**");
         http.headers().frameOptions().sameOrigin();
         http.authorizeRequests()
-                .antMatchers("/").access("hasRole('READER')")//'/'的请求只有经过身份验证的且拥有READER权限的才能访问
+                .antMatchers("/").access("hasAuthority('READER')")//'/'的请求只有经过身份验证的且拥有READER权限的才能访问
                 .antMatchers("/**").permitAll()//其它请求路径向所有用户开放了访问权限
                 .and()
                 .formLogin()
