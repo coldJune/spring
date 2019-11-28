@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <bean id="sgtPeppers" class="soundsystem.SgtPeppers"></bean>
+    <bean id="cdPlayer" class="soundsystem.CDPlayer">
+        <constructor-arg ref="sgtPeppers"/>
+    </bean>
+    <bean id="cdPlayer1" class="soundsystem.CDPlayer"
+          c:cd-ref="sgtPeppers">
+    </bean>
+    <bean id="cd2" class="soundsystem.CDPlayer" c:_0-ref="sgtPeppers"/>
+    <!--<bean id="cd3" class="soundsystem.CDPlayer"  c:_-ref="sgtPeppers"/>不能用这种方式声明-->
+    <bean id="blankDisc" class="soundsystem.BlankDisc">
+        <constructor-arg value="title1"/>
+        <constructor-arg value="artist1"/>
+    </bean>
+    <bean id="blank1 " class="soundsystem.BlankDisc"
+    c:_0="title1"
+    c:_1="artist1"/>
+
+    <bean id="blank" class="soundsystem.BlankDiscWithList">
+        <constructor-arg value="title1"/>
+        <constructor-arg value="artis"/>
+        <constructor-arg>
+            <list>
+                <value>1</value>
+                <value>1</value>
+                <value>1</value>
+
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="cdplayerwithproperties" class="soundsystem.CDPlayerWithProperties">
+        <property name="compactDisc" ref="sgtPeppers"/>
+    </bean>
+    <bean id="cdplayerwithproperties1" class="soundsystem.CDPlayerWithProperties"  p:compactDisc-ref="sgtPeppers"/>
+    <bean id="blanksicwithproperties2" class="soundsystem.BlankDiscWithProperties">
+        <property name="title" value="title"/>
+        <property name="artist" value="artist"/>
+        <property name="tracks">
+            <list>
+                <value>1</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="blanksicwithproperties3" class="soundsystem.BlankDiscWithProperties"
+    p:title="title"
+    p:artist="artist">
+        <property name="tracks">
+            <list>
+                <value>1</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="blanksicwithproperties4" class="soundsystem.BlankDiscWithProperties"
+          p:title="title"
+          p:artist="artist"
+        p:tracks-ref="tracks">
+    </bean>
+    <util:list id="tracks">
+        <value>1</value>
+    </util:list>
+</beans>
