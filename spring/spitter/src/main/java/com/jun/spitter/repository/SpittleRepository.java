@@ -1,6 +1,6 @@
-package spitter.repository;
+package com.jun.spitter.repository;
 
-import spitter.model.Spittle;
+import com.jun.spitter.model.Spittle;
 
 import java.util.List;
 

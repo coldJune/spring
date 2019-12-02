@@ -1,4 +1,4 @@
-package spitter.config;
+package com.jun.spitter.web;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,7 +14,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  */
 @Configuration
 @EnableWebMvc//启动Spring MVC
-@ComponentScan("spitter.web")//启动组件扫描
+@ComponentScan("com.jun.spitter.web")//启动组件扫描
 public class WebConfig extends WebMvcConfigurerAdapter {
     /**
      * 配置JSP解析视图
@@ -23,15 +23,16 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public ViewResolver viewResolver(){
         InternalResourceViewResolver resolver= new InternalResourceViewResolver();
-        resolver.setPrefix("/src/main/views");
+        resolver.setPrefix("/WEB-INF/views/");
         resolver.setSuffix(".jsp");
         resolver.setExposeContextBeansAsAttributes(true);
         return resolver;
     }
 
 
-    @Override
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-        configurer.enable();//静态资源转发到默认的Servlet上
-    }
+//    @Override
+//    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+//        configurer.enable();//静态资源转发到默认的Servlet上
+//        super.configureDefaultServletHandling(configurer);
+//    }
 }

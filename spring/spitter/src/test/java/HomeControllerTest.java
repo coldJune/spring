@@ -1,7 +1,7 @@
 import org.junit.Test;
 
 import org.springframework.test.web.servlet.MockMvc;
-import spitter.web.HomeController;
+import com.jun.spitter.web.HomeController;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;

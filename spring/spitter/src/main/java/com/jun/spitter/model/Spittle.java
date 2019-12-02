@@ -1,4 +1,4 @@
-package spitter.model;
+package com.jun.spitter.model;
 
 import java.util.Date;
 
