@@ -2,6 +2,9 @@ package com.jun.spitter.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletRegistration;
+
 
 /**
  * @author june
@@ -24,4 +27,10 @@ public class SpitterWebInitializer extends AbstractAnnotationConfigDispatcherSer
         return new Class<?>[] {WebConfig.class};
     }
 
+    @Override
+    protected void customizeRegistration(ServletRegistration.Dynamic registration) {
+        registration.setMultipartConfig(
+                new MultipartConfigElement("spitter/uploads",2*1024*1024,4*1024*1024,0)
+        );
+    }
 }
