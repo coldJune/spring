@@ -15,3 +15,5 @@
 *.swn
 *.DS_Store
 *.class
+*/classes
+*/class
