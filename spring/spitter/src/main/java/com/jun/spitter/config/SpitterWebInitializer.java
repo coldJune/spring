@@ -1,6 +1,5 @@
 package com.jun.spitter.config;
 
-import com.jun.spitter.web.WebConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 
