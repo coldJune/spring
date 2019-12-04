@@ -12,11 +12,12 @@
     <div id="content">
       <h1>Welcome to Spitter</h1>
   
-      <form method="POST" enctype="multipart/form-data">
-        <input type="file" name="file"></input><br/>
-        <input type="submit"></input>
-      </form>
-  
+      <a th:href="@{/spittles}">Spittles</a> | 
+      <a th:href="@{/spitter/register}">Register</a>
+      
+      <br/>
+      
+      View: <span th:text="${view}">unknown</span>
     </div>
     <div id="footer" th:include="page :: copy"></div>
   </body>

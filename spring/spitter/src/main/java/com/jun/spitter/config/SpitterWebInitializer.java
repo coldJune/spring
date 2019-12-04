@@ -29,8 +29,8 @@ public class SpitterWebInitializer extends AbstractAnnotationConfigDispatcherSer
 
     @Override
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {
-        registration.setMultipartConfig(
-                new MultipartConfigElement("spitter/uploads",2*1024*1024,4*1024*1024,0)
+        registration.setMultipartConfig(//需手动在磁盘创建该路径
+                new MultipartConfigElement("E:/spring/spitter/uploads",2*1024*1024,4*1024*1024,0)
         );
     }
 }

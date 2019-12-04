@@ -20,7 +20,7 @@ public class SpitterController {
 
     private SpitterRepository spitterRepository;
 
-    @Autowired
+//    @Autowired
     public SpitterController(SpitterRepository spitterRepository){
         this.spitterRepository = spitterRepository;
     }

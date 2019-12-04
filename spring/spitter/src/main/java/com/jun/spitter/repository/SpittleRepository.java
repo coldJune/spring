@@ -8,4 +8,5 @@ public interface SpittleRepository {
     List<Spittle> findSpittles(long max, int count);
 
     Spittle findOne(Long id);
+    void save(Spittle spittle);
 }

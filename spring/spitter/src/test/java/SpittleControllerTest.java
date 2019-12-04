@@ -23,7 +23,8 @@ public class SpittleControllerTest {
         SpittleRepository mockRespository = mock(SpittleRepository.class);
         when(mockRespository.findSpittles(1111, 50)).thenReturn(exceptedSpittles);
 
-        SpittleController spittleController = new SpittleController(mockRespository);
+//        SpittleController spittleController = new SpittleController(mockRespository);
+        SpittleController spittleController = new SpittleController();
         MockMvc mockMvc = standaloneSetup(spittleController).setSingleView(
                 new InternalResourceView("/WEB-INF/views/spittles.jsp")
         ).build();//需要配置视图或者会因为请求路径和返回视图相同报循环访问的错误
@@ -40,7 +41,9 @@ public class SpittleControllerTest {
         SpittleRepository mockRepository = mock(SpittleRepository.class);
         when(mockRepository.findOne(1l)).thenReturn(exceptedSpittle);
 
-        SpittleController spittleController = new SpittleController(mockRepository);
+//        SpittleController spittleController = new SpittleController(mockRepository);
+        SpittleController spittleController = new SpittleController();
+
         MockMvc mockMvc = standaloneSetup(spittleController).build();
 
         mockMvc.perform(get("/showSpittle/1"))
