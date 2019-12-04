@@ -40,6 +40,9 @@ public class SpittleController {
     @RequestMapping(value = "/spittles", method = GET)
     public List<Spittle> spittles(@RequestParam(value = "max", defaultValue =MAX_LONG_VALUE) long max,
                                   @RequestParam(value = "count", defaultValue ="20") int count){
+        if(max==0){
+            throw new DuplicateSpittleException();
+        }
         return spittleRepository.findSpittles(max,count);
     }
 
