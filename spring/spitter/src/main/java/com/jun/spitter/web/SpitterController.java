@@ -60,4 +60,9 @@ public class SpitterController {
         }
         return "profile";
     }
+
+    @RequestMapping(value = "me", method = GET)
+    public String me(){
+        return "home";
+    }
 }

@@ -12,4 +12,8 @@ public class HomeController {
     public String home(){
         return "home"; //视图名为home
     }
+    @RequestMapping(value = "login",method = GET)
+    public String login(){
+        return "login";
+    }
 }
