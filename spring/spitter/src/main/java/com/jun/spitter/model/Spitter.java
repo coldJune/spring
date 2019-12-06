@@ -26,7 +26,8 @@ public class Spitter {
     @NotNull
     @Size(min=2, max=30)
     private String lastName;
-
+    private String fullName;
+    private boolean updateByEmail;
     @NotNull
     @Email
     private String email;
@@ -35,6 +36,14 @@ public class Spitter {
 
     public Spitter(String username, String password, String firstName, String lastName, String email) {
         this(null, username, password, firstName, lastName, email);
+    }
+    public Spitter(Long id, String username, String password, String fullName, String email, boolean updateByEmail) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.fullName = fullName;
+        this.email = email;
+        this.updateByEmail = updateByEmail;
     }
 
     public Spitter(Long id, String username, String password, String firstName, String lastName, String email) {
@@ -92,6 +101,14 @@ public class Spitter {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public boolean isUpdateByEmail() {
+        return updateByEmail;
     }
 
     @Override
