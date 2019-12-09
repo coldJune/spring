@@ -7,6 +7,8 @@ create table spitter (
   password varchar(25) not null,
   fullName varchar(100) not null,
   email varchar(50) not null,
+  firstName varchar(200),
+  lastname varchar(200),
   updateByEmail boolean not null
 );
 

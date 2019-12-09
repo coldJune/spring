@@ -3,6 +3,7 @@ package com.jun.spitter.repository.jdbc;
 import com.jun.spitter.model.Spitter;
 import com.jun.spitter.repository.SpitterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
@@ -14,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Repository
+@Profile("jdbc")
 public class JdbcSpitterRepository implements SpitterRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;

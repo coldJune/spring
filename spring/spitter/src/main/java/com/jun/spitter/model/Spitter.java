@@ -1,14 +1,22 @@
 package com.jun.spitter.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.validator.constraints.Email;
 
+@Entity
 public class Spitter {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
@@ -18,12 +26,10 @@ public class Spitter {
     @NotNull
     @Size(min=5, max=25)
     private String password;
-
-    @NotNull
+    @Null
     @Size(min=2, max=30)
     private String firstName;
 
-    @NotNull
     @Size(min=2, max=30)
     private String lastName;
     private String fullName;
