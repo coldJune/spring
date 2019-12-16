@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
+    <title>World</title>
+    <script th:src="@{/webjars/sockjs-client/1.0.2/sockjs.min.js}" ></script>
+    <script th:src="@{/webjars/jquery/3.1.0/jquery.min.js}"></script>
+    <script th:src="@{/webjars/stomp-websocket/2.3.3/stomp.min.js}"></script>
+</head>
+<body xmlns:th="http://www.thymeleaf.org">
+<button id="stop">Stop</button>
+<script th:inline="javascript">
+    var sock = new SockJS("/hello");
+    var stomp = Stomp.over(sock);
+    stomp.connect("guest","guest", function (frame) {
+        console.log('***** Connected ***');
+        stomp.subscribe("/topic/world", handlePolo);
+        sayHello();
+    })
+
+    function handleOneTime(message){
+        console.log("Recevied ",message);
+    }
+    function handlePolo(message){
+        console.log("Received: ", message);
+        $('#output').append("<b>Received: "+
+            JSON.parse(message.body).message+"</b><br>"
+        )
+        if( JSON.parse(message.body).message==='world'){
+            setTimeout(function () {
+                sayHello()
+            }, 2000);
+        }
+    }
+    function handleErrors(message) {
+        console.log("Received errors:", message);
+        $('#output').append('<b>GET AN ERROR:' + JSON.parse(message.body).message+"</b><br>")
+    }
+
+    function sayHello(){
+        console.log("Sending Hello");
+        stomp.send("/app/hello",{}, JSON.stringify({'message':'Hello'}));
+        $('#output').append("<b>Send Hello</b><br>")
+    }
+    $('#stop').click(function() {sock.close()});
+</script>
+
+<div id="output"></div>
+</body>
+</html>
