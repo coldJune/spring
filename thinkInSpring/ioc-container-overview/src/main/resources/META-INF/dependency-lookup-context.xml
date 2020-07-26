@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="book" class="com.jun.ioc.overview.dependency.domain.Book">
+        <property name="price" value="12"/>
+        <property name="name" value="Spring"/>
+    </bean>
+    <bean id="objectFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
+        <property name="targetBeanName" value="book"/>
+    </bean>
+    <bean id="cheapBook" class="com.jun.ioc.overview.dependency.domain.CheapBook" parent="book" primary="true">
+        <property name="isbn" value="ISBN-111"/>
+    </bean>
+</beans>
