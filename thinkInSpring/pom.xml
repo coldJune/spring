@@ -24,6 +24,7 @@
     </build>
     <modules>
         <module>ioc-container-overview</module>
+        <module>spring-bean</module>
     </modules>
 
 </project>
