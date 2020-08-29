@@ -13,16 +13,18 @@ public class Book {
         return name;
     }
 
-    public void setName(String name) {
+    public Book setName(String name) {
         this.name = name;
+        return this;
     }
 
     public int getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public Book setPrice(int price) {
         this.price = price;
+        return this;
     }
 
     @Override
@@ -31,5 +33,12 @@ public class Book {
                 "price=" + price +
                 ", name=" + name +
                 '}';
+    }
+
+    public static Book createBook(){
+        Book book = new Book();
+        book.setName("staticMethodBook")
+                .setPrice(1);
+        return book;
     }
 }
