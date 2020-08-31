@@ -45,4 +45,8 @@ public class DefaultBookFactory implements BookFactory, InitializingBean, Dispos
         System.out.println("自定义销毁方法doDestroy(): UserFactory销毁中中...");
 
     }
+    @Override
+    protected void finalize() throws Throwable{
+        System.out.println("GC执行中");
+    }
 }
