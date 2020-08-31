@@ -26,11 +26,13 @@ public class BeanInitializationDemo {
         System.out.println("Spring 容器已启动");
         applicationContext.getBeansOfType(BookFactory.class);
         //关闭Spring 容器
+        System.out.println("Spring容器准备关闭");
         applicationContext.close();
+        System.out.println("Spring容器已关闭");
 
     }
 
-    @Bean(initMethod = "initBookFactoryByBean")
+    @Bean(initMethod = "initBookFactoryByBean",destroyMethod = "doDestroy")
     @Lazy(false)
     public BookFactory bookFactory(){
         return new DefaultBookFactory();
