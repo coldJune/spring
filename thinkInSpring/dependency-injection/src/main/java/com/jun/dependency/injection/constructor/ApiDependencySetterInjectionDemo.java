@@ -1,14 +1,13 @@
-package com.jun.dependency.injection;
+package com.jun.dependency.injection.constructor;
 
-import com.jun.ioc.overview.dependency.domain.Book;
+import com.jun.dependency.injection.BookHolder;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
 
 /**
- * 基于API 资源的依赖Setter方法注入示例
+ * 基于API 资源的依赖Constructor方法注入示例
  * @Author dengxiaojun
  * @Date 2020/9/24 10:42
  * @Version 1.0
@@ -41,7 +40,7 @@ public class ApiDependencySetterInjectionDemo {
      */
     private static BeanDefinition createBookHolderBeanDefinition(){
         BeanDefinitionBuilder definitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(BookHolder.class);
-        definitionBuilder.addPropertyReference("book","book");
+        definitionBuilder.addConstructorArgReference("book");
         return definitionBuilder.getBeanDefinition();
     }
 
