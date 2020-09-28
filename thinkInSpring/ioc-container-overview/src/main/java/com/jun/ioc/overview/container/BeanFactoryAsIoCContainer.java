@@ -1,6 +1,6 @@
 package com.jun.ioc.overview.container;
 
-import com.jun.ioc.overview.dependency.domain.Book;
+import com.jun.ioc.overview.domain.Book;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;

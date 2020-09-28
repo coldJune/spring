@@ -1,6 +1,6 @@
 package com.jun.dependency.injection;
 
-import com.jun.ioc.overview.dependency.domain.Book;
+import com.jun.ioc.overview.domain.Book;
 
 /**
  * {@linke Book} 的Holder类

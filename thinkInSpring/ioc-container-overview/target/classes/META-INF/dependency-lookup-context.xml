@@ -4,14 +4,29 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="book" class="com.jun.ioc.overview.dependency.domain.Book">
+    <bean id="book" class="com.jun.ioc.overview.domain.Book">
         <property name="price" value="12"/>
         <property name="name" value="Spring"/>
+        <property name="city" value="CD"/>
+        <property name="resource" value="classpath:/META-INF/book.properties"/>
+<!--        <property name="saleCities" value="CD,CQ"/>-->
+        <property name="saleCities">
+            <array>
+                <value>CQ</value>
+                <value>CD</value>
+            </array>
+        </property>
+        <property name="publishCities">
+            <list>
+                <value>CD</value>
+                <value>CQ</value>
+            </list>
+        </property>
     </bean>
     <bean id="objectFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
         <property name="targetBeanName" value="book"/>
     </bean>
-    <bean id="cheapBook" class="com.jun.ioc.overview.dependency.domain.CheapBook" parent="book" primary="true">
+    <bean id="cheapBook" class="com.jun.ioc.overview.domain.CheapBook" parent="book" primary="true">
         <property name="isbn" value="ISBN-111"/>
     </bean>
 </beans>

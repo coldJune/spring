@@ -1,4 +1,4 @@
-package com.jun.ioc.overview.dependency.domain;
+package com.jun.ioc.overview.domain;
 
 import com.jun.ioc.overview.annotation.Cheap;
 

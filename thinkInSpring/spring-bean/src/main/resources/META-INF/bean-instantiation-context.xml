@@ -5,7 +5,7 @@
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--静态方法实例化 Bean-->
-    <bean id="book-by-static-method" class="com.jun.ioc.overview.dependency.domain.Book"
+    <bean id="book-by-static-method" class="com.jun.ioc.overview.domain.Book"
       factory-method="createBook"/>
 
     <!--实例(Bean)方法实例化 Bean-->

@@ -1,6 +1,6 @@
 package com.jun.bean.definition;
 
-import com.jun.ioc.overview.dependency.domain.Book;
+import com.jun.ioc.overview.domain.Book;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

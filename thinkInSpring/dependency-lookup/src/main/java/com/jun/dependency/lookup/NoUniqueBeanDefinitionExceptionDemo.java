@@ -1,7 +1,5 @@
 package com.jun.dependency.lookup;
 
-import com.jun.ioc.overview.dependency.domain.Book;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;

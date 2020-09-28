@@ -1,12 +1,10 @@
 package com.jun.dependency.injection.setter;
 
 import com.jun.dependency.injection.BookHolder;
-import com.jun.ioc.overview.dependency.domain.Book;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
 
 /**
  * 基于API 资源的依赖Setter方法注入示例

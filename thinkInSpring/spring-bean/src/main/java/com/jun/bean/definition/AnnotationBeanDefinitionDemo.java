@@ -1,6 +1,6 @@
 package com.jun.bean.definition;
 
-import com.jun.ioc.overview.dependency.domain.Book;
+import com.jun.ioc.overview.domain.Book;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionReaderUtils;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;

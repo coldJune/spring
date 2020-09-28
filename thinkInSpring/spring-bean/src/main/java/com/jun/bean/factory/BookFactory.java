@@ -1,6 +1,6 @@
 package com.jun.bean.factory;
 
-import com.jun.ioc.overview.dependency.domain.Book;
+import com.jun.ioc.overview.domain.Book;
 
 /**
  * {@link Book} 工厂类

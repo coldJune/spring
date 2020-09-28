@@ -1,7 +1,7 @@
 package com.jun.dependency.injection.constructor;
 
 import com.jun.dependency.injection.BookHolder;
-import com.jun.ioc.overview.dependency.domain.Book;
+import com.jun.ioc.overview.domain.Book;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;

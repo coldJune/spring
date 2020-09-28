@@ -1,7 +1,7 @@
 package com.jun.ioc.overview.dependency.lookup;
 
 import com.jun.ioc.overview.annotation.Cheap;
-import com.jun.ioc.overview.dependency.domain.Book;
+import com.jun.ioc.overview.domain.Book;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.ObjectFactory;

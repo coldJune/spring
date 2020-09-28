@@ -1,11 +1,8 @@
 package com.jun.dependency.injection.setter;
 
 import com.jun.dependency.injection.BookHolder;
-import com.jun.ioc.overview.dependency.domain.Book;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
 
 /**
  * "byName" Auto-wiring 依赖Setter方法注入示例

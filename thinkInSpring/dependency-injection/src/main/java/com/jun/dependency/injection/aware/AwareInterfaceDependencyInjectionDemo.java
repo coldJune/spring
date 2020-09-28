@@ -1,16 +1,11 @@
 package com.jun.dependency.injection.aware;
 
-import com.jun.dependency.injection.BookHolder;
-import com.jun.ioc.overview.dependency.domain.Book;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
 
 /**
  * 基于{@linke @Aware} 接口回调的注入示例
