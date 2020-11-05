@@ -1,8 +1,11 @@
 package com.jun.ioc.overview.domain;
 
 import com.jun.ioc.overview.enums.City;
+import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.core.io.Resource;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,13 +14,15 @@ import java.util.List;
  * @Date 2020/7/26 18:42
  * @Version 1.0
  */
-public class Book {
+public class Book implements BeanNameAware {
     private int price;
     private String name;
 
     private City city;
     private City[] saleCities;
     private List<City> publishCities;
+
+    private String beanName;
     public String getName() {
         return name;
     }
@@ -87,5 +92,20 @@ public class Book {
         book.setName("staticMethodBook")
                 .setPrice(1);
         return book;
+    }
+
+    @PostConstruct
+    public void init(){
+        System.out.println("书本["+beanName+"]初始化中....");
+    }
+
+    @PreDestroy
+    public void destroy(){
+        System.out.println("书本["+beanName+"]销毁中...");
+    }
+
+    @Override
+    public void setBeanName(String name) {
+        this.beanName = name;
     }
 }
