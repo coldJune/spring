@@ -8,5 +8,7 @@
 <body>
 \${book.price} : ${book.price}
 \${applicationScope['scopedTarget.book'].price} : ${applicationScope['scopedTarget.book'].price}
+\${cheapBook.price} : ${cheapBook.price}
+\${applicationScope['scopedTarget.cheapBook'].price} : ${applicationScope['scopedTarget.cheapBook'].price}
 </body>
 </html>
