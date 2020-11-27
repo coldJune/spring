@@ -60,4 +60,11 @@
         <module>bean-lifecycle</module>
     </modules>
 
+    <repositories>
+        <repository>
+            <id>nexus-aliyun</id>
+            <name>Nexus aliyun</name>
+            <url>https://maven.aliyun.com/repository/central</url>
+        </repository>
+    </repositories>
 </project>

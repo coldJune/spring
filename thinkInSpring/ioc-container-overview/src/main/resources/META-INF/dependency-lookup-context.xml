@@ -4,6 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!-- Root BeanDefinition 不需要合并，不存在parent-->
+    <!--普通 beanDefinition GenericBeanDefinition-->
     <bean id="book" class="com.jun.ioc.overview.domain.Book">
         <property name="price" value="12"/>
         <property name="name" value="Spring"/>
@@ -26,6 +28,7 @@
     <bean id="objectFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
         <property name="targetBeanName" value="book"/>
     </bean>
+    <!--普通 beanDefinition GenericBeanDefinition-->
     <bean id="cheapBook" class="com.jun.ioc.overview.domain.CheapBook" parent="book" primary="true">
         <property name="isbn" value="ISBN-111"/>
     </bean>
