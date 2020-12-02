@@ -25,18 +25,19 @@ public class BeanInstantiationLifecycleDemo {
         beanFactory.addBeanPostProcessor(new MyInstantiationAwareBeanPostProcessor());
         // 基于XML 资源BeanDefinitionReader实现
         XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
-        String location = "META-INF/dependency-lookup-context.xml";
-        // 基于ClassPath 的XMl资源
-        Resource resource = new ClassPathResource(location);
-        // 指定编码为UTF-8
-        EncodedResource encodedResource = new EncodedResource(resource,"UTF-8");
-        int beanDefinitionNums = beanDefinitionReader.loadBeanDefinitions(encodedResource);
+        String[] locations = {"META-INF/dependency-lookup-context.xml","META-INF/bean-constuctor-rdependency-injection-context.xml"};
+
+        int beanDefinitionNums = beanDefinitionReader.loadBeanDefinitions(locations);
         System.out.println("加载 beanDefinition数量："+beanDefinitionNums);
         Book book =beanFactory.getBean("book", Book.class);
         System.out.println(book);
 
         Book cheapBook = beanFactory.getBean("cheapBook",Book.class);
         System.out.println(cheapBook);
+
+        // 构造器注入按照类型注入 resolveDependency
+        BookHolder bookHolder = beanFactory.getBean("bookHolder",BookHolder.class);
+        System.out.println(bookHolder);
 
     }
 
