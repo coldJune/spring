@@ -4,5 +4,8 @@
        xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="
         http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
-    <bean id="bookHolder" class="com.jun.bean.lifecycle.BookHolder" autowire="constructor"/>
+    <bean id="bookHolder" class="com.jun.bean.lifecycle.BookHolder" autowire="constructor">
+<!--        <property name="number" value="1"/>-->
+        <property name="desc" value="the bookHolder v1"/>
+    </bean>
 </beans>
