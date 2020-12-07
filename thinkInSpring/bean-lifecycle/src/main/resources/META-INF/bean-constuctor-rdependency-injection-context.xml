@@ -8,4 +8,5 @@
 <!--        <property name="number" value="1"/>-->
         <property name="desc" value="the bookHolder v1"/>
     </bean>
+    <bean class="com.jun.bean.lifecycle.MyInstantiationAwareBeanPostProcessor"/>
 </beans>
