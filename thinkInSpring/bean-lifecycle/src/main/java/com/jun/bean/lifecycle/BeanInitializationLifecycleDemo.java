@@ -3,6 +3,7 @@ package com.jun.bean.lifecycle;
 import com.jun.ioc.overview.domain.Book;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import org.springframework.context.annotation.CommonAnnotationBeanPostProcessor;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -19,8 +20,10 @@ public class BeanInitializationLifecycleDemo {
     private static void executeBeanFactory(){
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
 
-        // 方法一：追加 BeanPostProcessor实现 MyInstantiationAwareBeanPostProcessor
+        // 追加 BeanPostProcessor实现 MyInstantiationAwareBeanPostProcessor
         beanFactory.addBeanPostProcessor(new MyInstantiationAwareBeanPostProcessor());
+        // 添加 CommonAnnotationBeanPostProcessor 解决@PostConstruct未生效的问题
+        beanFactory.addBeanPostProcessor(new CommonAnnotationBeanPostProcessor());
         // 基于XML 资源BeanDefinitionReader实现
         XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
         String[] locations = {"META-INF/dependency-lookup-context.xml","META-INF/bean-constructor-dependency-injection-context.xml"};

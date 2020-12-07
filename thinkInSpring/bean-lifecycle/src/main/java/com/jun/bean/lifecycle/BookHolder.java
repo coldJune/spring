@@ -2,19 +2,19 @@ package com.jun.bean.lifecycle;
 
 import com.jun.ioc.overview.domain.Book;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanClassLoaderAware;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.BeanFactoryAware;
-import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.*;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.core.env.Environment;
+
+import javax.annotation.PostConstruct;
 
 /**
  * @Author dengxiaojun
  * @Date 2020/12/2 21:42
  * @Version 1.0
  */
-public class BookHolder implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAware, EnvironmentAware {
+public class BookHolder implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAware, EnvironmentAware
+        , InitializingBean {
     private Book book;
 
     private Integer number;
@@ -43,6 +43,27 @@ public class BookHolder implements BeanNameAware, BeanClassLoaderAware, BeanFact
     @Override
     public void setEnvironment(Environment environment) {
         this.environment = environment;
+    }
+
+    // 依赖于注解驱动
+    @PostConstruct
+    public void initPostConstruct(){
+        System.out.println(" before initPostConstruct desc="+this.desc);
+        // postProcessBeforeInitialization V3 -> initPostConstruct V4
+        this.desc="the bookHolder v4";
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println(" before afterPropertiesSet desc="+this.desc);
+        // initPostConstruct V4 -> afterPropertiesSet V5
+        this.desc="the bookHolder v5";
+    }
+
+    public void init(){
+        System.out.println("before init desc="+this.desc);
+        // afterPropertiesSet V4 -> init V6
+        this.desc = "the bookHolder v6";
     }
 
     public BookHolder(Book book) {
