@@ -30,6 +30,10 @@ public class BeanInitializationLifecycleDemo {
 
         int beanDefinitionNums = beanDefinitionReader.loadBeanDefinitions(locations);
         System.out.println("加载 beanDefinition数量："+beanDefinitionNums);
+        // 显式地执行 preInstantiateSingletons
+        // SmartInitializingSingleton 通常在Spring ApplicationContext场景使用
+        // preInstantiateSingletons将已经注册的BeanDefinition初始化成Spring Bean
+        beanFactory.preInstantiateSingletons();
         Book book =beanFactory.getBean("book", Book.class);
         System.out.println(book);
 
@@ -38,7 +42,9 @@ public class BeanInitializationLifecycleDemo {
 
         // 构造器注入按照类型注入 resolveDependency
         BookHolder bookHolder = beanFactory.getBean("bookHolder",BookHolder.class);
+
         System.out.println(bookHolder);
+
     }
 
 }

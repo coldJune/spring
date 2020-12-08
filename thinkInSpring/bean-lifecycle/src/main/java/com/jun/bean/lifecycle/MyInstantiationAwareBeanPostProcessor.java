@@ -74,4 +74,15 @@ public class MyInstantiationAwareBeanPostProcessor
         }
         return bean;
     }
+
+    @Override
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+        if (ObjectUtils.nullSafeEquals("bookHolder", beanName)
+                && BookHolder.class.equals(bean.getClass())) {
+            BookHolder bookHolder = (BookHolder) bean;
+            // BookHolder desc="BookHolder the bookHolder v6"
+            System.out.println("before postProcessAfterInitialization, bookHolder.desc="+bookHolder.getDesc());
+            bookHolder.setDesc("the bookHolder v7");
+        }
+        return bean;    }
 }

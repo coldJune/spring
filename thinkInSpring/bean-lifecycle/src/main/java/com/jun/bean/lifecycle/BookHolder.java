@@ -14,7 +14,7 @@ import javax.annotation.PostConstruct;
  * @Version 1.0
  */
 public class BookHolder implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAware, EnvironmentAware
-        , InitializingBean {
+        , InitializingBean,SmartInitializingSingleton {
     private Book book;
 
     private Integer number;
@@ -64,6 +64,13 @@ public class BookHolder implements BeanNameAware, BeanClassLoaderAware, BeanFact
         System.out.println("before init desc="+this.desc);
         // afterPropertiesSet V4 -> init V6
         this.desc = "the bookHolder v6";
+    }
+
+    @Override
+    public void afterSingletonsInstantiated() {
+        System.out.println("before afterSingletonsInstantiated desc="+this.desc);
+        // postProcessAfterInitialization v7 -> afterSingletonsInstantiated V8
+        this.desc = "the bookHolder v8";
     }
 
     public BookHolder(Book book) {
