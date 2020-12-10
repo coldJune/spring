@@ -7,6 +7,7 @@ import org.springframework.context.EnvironmentAware;
 import org.springframework.core.env.Environment;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 /**
  * @Author dengxiaojun
@@ -14,7 +15,7 @@ import javax.annotation.PostConstruct;
  * @Version 1.0
  */
 public class BookHolder implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAware, EnvironmentAware
-        , InitializingBean,SmartInitializingSingleton {
+        , InitializingBean,SmartInitializingSingleton, DisposableBean {
     private Book book;
 
     private Integer number;
@@ -73,6 +74,25 @@ public class BookHolder implements BeanNameAware, BeanClassLoaderAware, BeanFact
         this.desc = "the bookHolder v8";
     }
 
+    @PreDestroy
+    public void preDestroy(){
+        System.out.println("before preDestroy desc="+this.desc);
+        // postProcessBeforeDestruction v9 -> preDestroy V10
+        this.desc = "the bookHolder v10";
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("before destroy desc="+this.desc);
+        // destroy V10 -> destroy V11
+        this.desc = "the bookHolder v11";
+    }
+    public void doDestroy(){
+        System.out.println("before doDestroy desc="+this.desc);
+        // destroy V11 -> doDestroy V12
+        this.desc = "the bookHolder v12";
+    }
+
     public BookHolder(Book book) {
         this.book = book;
     }
@@ -100,5 +120,11 @@ public class BookHolder implements BeanNameAware, BeanClassLoaderAware, BeanFact
                 ", number=" + number +
                 ", desc='" + desc + '\'' +
                 '}';
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+        System.out.println("bookHolder 正在GC");
     }
 }
