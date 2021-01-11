@@ -41,7 +41,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.8.0</version>
                 <configuration>
                     <!--指定Java版本-->
                     <source>1.8</source>
@@ -58,6 +58,7 @@
         <module>dependency-source</module>
         <module>bean-scope</module>
         <module>bean-lifecycle</module>
+        <module>configuration-metadata</module>
     </modules>
 
     <repositories>
