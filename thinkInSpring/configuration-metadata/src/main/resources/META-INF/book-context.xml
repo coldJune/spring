@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:books="http://www.coldjune.org/schema/books"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.coldjune.org/schema/books
+        http://www.coldjune.org/schema/books.xsd">
+<!--    <bean id="book" class="com.jun.ioc.overview.domain.Book">-->
+<!--        <property name="price" value="12"/>-->
+<!--        <property name="name" value="Spring"/>-->
+<!--        <property name="city" value="CD"/>-->
+<!--        <property name="resource" value="classpath:/META-INF/book.properties"/>-->
+<!--        &lt;!&ndash;        <property name="saleCities" value="CD,CQ"/>&ndash;&gt;-->
+<!--        <property name="saleCities">-->
+<!--            <array>-->
+<!--                <value>CQ</value>-->
+<!--                <value>CD</value>-->
+<!--            </array>-->
+<!--        </property>-->
+<!--        <property name="publishCities">-->
+<!--            <list>-->
+<!--                <value>CD</value>-->
+<!--                <value>CQ</value>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--    </bean>-->
+    <books:book id="book" price="1" name="spring" city="CD"/>
+</beans>
